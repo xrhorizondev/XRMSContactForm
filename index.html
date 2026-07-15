@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExarMS Contact Form | XR Horizon</title>
+    <meta name="description" content="Contact XR Horizon for ExarMS product demonstrations and inquiries.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+    
+    <div class="container">
+        <header class="form-header">
+            <h1 class="gradient-text">ExarMS Demo Request</h1>
+            <p>Empower your surgical precision with extended reality. Please fill out the form below to organize a demonstration.</p>
+        </header>
+
+        <form id="contactForm" class="glass-panel">
+            <div class="form-group">
+                <label for="fullName">1. Full Name<span class="required">*</span></label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="designation">2. Expertise / Designation<span class="required">*</span></label>
+                    <select id="designation" name="designation" required>
+                        <option value="" disabled selected>Select Designation</option>
+                        <option value="Surgeon">Surgeon</option>
+                        <option value="Visiting Consultant">Visiting Consultant</option>
+                        <option value="PG Student">PG Student</option>
+                        <option value="Fellow">Fellow</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialty">3. Specialty<span class="required">*</span></label>
+                    <select id="specialty" name="specialty" required>
+                        <option value="" disabled selected>Select Specialty</option>
+                        <option value="General Surgery">General Surgery</option>
+                        <option value="GI Surgery">GI Surgery</option>
+                        <option value="Minimal Access Surgery">Minimal Access Surgery</option>
+                        <option value="Surgical Gastroenterology">Surgical Gastroenterology</option>
+                        <option value="Bariatric Surgery">Bariatric Surgery</option>
+                        <option value="Colorectal Surgery">Colorectal Surgery</option>
+                        <option value="Hepatobiliary Surgery">Hepatobiliary Surgery</option>
+                        <option value="Surgical Oncology">Surgical Oncology</option>
+                        <option value="Urology">Urology</option>
+                        <option value="Gynecology">Gynecology</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="hospital">4. Hospital / Institution<span class="required">*</span></label>
+                <input type="text" id="hospital" name="hospital" required placeholder="Enter hospital or institution name">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="mobileNumber">5. Mobile Number<span class="required">*</span></label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="Enter your mobile number">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">6. Email Address<span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>7. Contact Person for Organizing a Demo</label>
+                <button type="button" id="toggleContactPersonBtn" class="toggle-btn">+ Add Contact Person Details</button>
+                
+                <div id="contactPersonDetails" class="hidden-section">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cpName">Name</label>
+                            <input type="text" id="cpName" name="cpName" placeholder="e.g. John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpDesignation">Designation</label>
+                            <input type="text" id="cpDesignation" name="cpDesignation" placeholder="e.g. HOD, OT In-charge">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cpContact">Contact Number</label>
+                            <input type="tel" id="cpContact" name="cpContact" placeholder="Contact number">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpAddress">Address & Details</label>
+                            <input type="text" id="cpAddress" name="cpAddress" placeholder="Address or other info">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-label">
+                        8. Consent for Communication<br>
+                        <span class="consent-summary">
+                            I consent to XR Horizon collecting and processing the information provided in this form... 
+                            <a href="#" id="readMoreConsent" style="color: var(--accent-primary); text-decoration: none;">Read more</a>
+                        </span>
+                        <span class="consent-full" style="display: none;">
+                            I consent to XR Horizon collecting and processing the information provided in this form and contacting me via phone, WhatsApp, email, or SMS regarding EXAR MS, product demonstrations, and related communications. By submitting this form, you agree to XR Horizon contacting you. Your information will not be shared with third parties and will be used solely for business communication purposes. You may withdraw your consent at any time by writing to us at info@xrhorizon.in
+                            <a href="#" id="readLessConsent" style="color: var(--accent-primary); text-decoration: none; margin-left: 5px;">Read less</a>
+                        </span>
+                    </span>
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <span>Submit Request</span>
+                <div class="btn-glow"></div>
+            </button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
