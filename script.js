@@ -11,15 +11,46 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isHidden) {
                 detailsSection.classList.add('show');
                 toggleBtn.innerHTML = '&minus; Hide Contact Person Details';
-                toggleBtn.style.background = 'rgba(239, 68, 68, 0.1)';
-                toggleBtn.style.color = 'var(--error-color)';
-                toggleBtn.style.borderColor = 'var(--error-color)';
+                toggleBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+                toggleBtn.style.color = '#ffffff';
+                toggleBtn.style.borderColor = '#ffffff';
             } else {
                 detailsSection.classList.remove('show');
                 toggleBtn.innerHTML = '+ Add Contact Person Details';
                 toggleBtn.style.background = '';
                 toggleBtn.style.color = '';
                 toggleBtn.style.borderColor = '';
+            }
+        });
+    }
+
+    // Other Option Logic for Dropdowns
+    const designationSelect = document.getElementById('designation');
+    const otherDesignationInput = document.getElementById('otherDesignation');
+    if (designationSelect && otherDesignationInput) {
+        designationSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'Other') {
+                otherDesignationInput.style.display = 'block';
+                otherDesignationInput.required = true;
+            } else {
+                otherDesignationInput.style.display = 'none';
+                otherDesignationInput.required = false;
+                otherDesignationInput.value = '';
+            }
+        });
+    }
+
+    const specialtySelect = document.getElementById('specialty');
+    const otherSpecialtyInput = document.getElementById('otherSpecialty');
+    if (specialtySelect && otherSpecialtyInput) {
+        specialtySelect.addEventListener('change', (e) => {
+            if (e.target.value === 'Other') {
+                otherSpecialtyInput.style.display = 'block';
+                otherSpecialtyInput.required = true;
+            } else {
+                otherSpecialtyInput.style.display = 'none';
+                otherSpecialtyInput.required = false;
+                otherSpecialtyInput.value = '';
             }
         });
     }
@@ -98,6 +129,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Prepare form data
             const formData = new FormData(form);
             
+            // Override 'Other' selections with the custom text input values
+            if (formData.get('designation') === 'Other' && formData.get('otherDesignation')) {
+                formData.set('designation', formData.get('otherDesignation'));
+            }
+            if (formData.get('specialty') === 'Other' && formData.get('otherSpecialty')) {
+                formData.set('specialty', formData.get('otherSpecialty'));
+            }
+            
             // Your deployed Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoWDlKNuAUFn8eYu5s9bj1KsBUtYxkAjy_urtL6yFYCwc2CMYNlaZxt4BB7ZKjLUPh9Q/exec';
             
@@ -118,34 +157,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Actual Google Sheets Submission
+            // Actual Google Sheets Submission (Optimistic fast UI update)
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 body: formData
-            })
-            .then(response => {
-                form.reset();
-                btn.querySelector('span').innerText = 'Request Submitted!';
-                btn.style.background = '#10b981'; // Success green
-                
-                setTimeout(() => {
-                    btn.querySelector('span').innerText = originalText;
-                    btn.style.background = ''; // Reset
-                    btn.style.pointerEvents = 'auto';
-                }, 3000);
-            })
-            .catch(error => {
-                console.error('Error submitting form', error);
-                btn.querySelector('span').innerText = 'Submission Failed';
-                btn.style.background = 'var(--error-color)'; // Error red
-                
-                setTimeout(() => {
-                    btn.querySelector('span').innerText = originalText;
-                    btn.style.background = ''; // Reset
-                    btn.style.pointerEvents = 'auto';
-                }, 3000);
-            });
+            }).catch(error => console.error('Error in background submission:', error));
+            
+            // Instantly show success without waiting for Google Apps Script to finish
+            form.reset();
+            btn.querySelector('span').innerText = 'Request Submitted!';
+            btn.style.background = '#10b981'; // Success green
+            
+            setTimeout(() => {
+                btn.querySelector('span').innerText = originalText;
+                btn.style.background = ''; // Reset
+                btn.style.pointerEvents = 'auto';
+            }, 3000);
         }
     });
 });

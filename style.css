@@ -4,9 +4,9 @@
     --panel-border: rgba(255, 255, 255, 0.08);
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --accent-primary: #0ea5e9;
-    --accent-secondary: #8b5cf6;
-    --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    --accent-primary: #00c2cb;
+    --accent-secondary: #902c8e;
+    --accent-gradient: linear-gradient(to right, var(--accent-secondary), var(--accent-primary));
     --input-bg: rgba(15, 23, 42, 0.8);
     --input-border: rgba(255, 255, 255, 0.12);
     --input-focus: rgba(14, 165, 233, 0.5);
@@ -21,6 +21,7 @@
 
 body {
     font-family: 'Outfit', sans-serif;
+    background: url('assets/bg-image.png') center/cover no-repeat fixed;
     background-color: var(--bg-color);
     color: var(--text-main);
     min-height: 100vh;
@@ -34,6 +35,7 @@ body {
 
 /* Background Effects */
 .background-effects {
+    display: none; /* Hidden to allow background image to show clearly */
     position: fixed;
     top: 0;
     left: 0;
@@ -233,8 +235,8 @@ select option {
     left: 0;
     height: 22px;
     width: 22px;
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     transition: all 0.2s ease;
 }

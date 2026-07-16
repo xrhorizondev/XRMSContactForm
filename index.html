@@ -6,6 +6,7 @@
     <title>ExarMS Contact Form | XR Horizon</title>
     <meta name="description" content="Contact XR Horizon for ExarMS product demonstrations and inquiries.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +18,12 @@
     
     <div class="container">
         <header class="form-header">
-            <h1 class="gradient-text">ExarMS Demo Request</h1>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 30px; margin-bottom: 20px;">
+                <img src="assets/exarms-logo.png" alt="EXARMS Logo" style="height: 55px; object-fit: contain;">
+                <div style="width: 2px; height: 50px; background-color: rgba(255, 255, 255, 0.3);"></div>
+                <img src="assets/xr-horizon-logo.png" alt="XR Horizon Logo" style="height: 55px; object-fit: contain;">
+            </div>
+            <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; color: #ffffff;">EXARMS Demo Request</h1>
             <p>Empower your surgical precision with extended reality. Please fill out the form below to organize a demonstration.</p>
         </header>
 
@@ -39,6 +45,7 @@
                         <option value="Professor">Professor</option>
                         <option value="Other">Other</option>
                     </select>
+                    <input type="text" id="otherDesignation" name="otherDesignation" placeholder="Please specify your designation" style="display: none; margin-top: 10px;">
                 </div>
 
                 <div class="form-group">
@@ -57,6 +64,7 @@
                         <option value="Gynecology">Gynecology</option>
                         <option value="Other">Other</option>
                     </select>
+                    <input type="text" id="otherSpecialty" name="otherSpecialty" placeholder="Please specify your specialty" style="display: none; margin-top: 10px;">
                 </div>
             </div>
 
@@ -68,7 +76,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="mobileNumber">5. Mobile Number<span class="required">*</span></label>
-                    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="Enter your mobile number">
+                    <input type="tel" id="mobileNumber" name="mobileNumber" required placeholder="Enter your mobile number" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
 
                 <div class="form-group">
@@ -95,7 +103,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cpContact">Contact Number</label>
-                            <input type="tel" id="cpContact" name="cpContact" placeholder="Contact number">
+                            <input type="tel" id="cpContact" name="cpContact" placeholder="Contact number" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                         </div>
                         <div class="form-group">
                             <label for="cpAddress">Address & Details</label>
@@ -110,14 +118,14 @@
                     <input type="checkbox" id="consent" name="consent" required>
                     <span class="checkmark"></span>
                     <span class="checkbox-label">
-                        8. Consent for Communication<br>
-                        <span class="consent-summary">
+                        <strong>8. Consent for Communication</strong><br>
+                        <span class="consent-summary" style="font-weight: 600;">
                             I consent to XR Horizon collecting and processing the information provided in this form... 
-                            <a href="#" id="readMoreConsent" style="color: var(--accent-primary); text-decoration: none;">Read more</a>
+                            <a href="#" id="readMoreConsent" style="color: var(--accent-primary); text-decoration: none; font-weight: normal;">Read more</a>
                         </span>
-                        <span class="consent-full" style="display: none;">
+                        <span class="consent-full" style="display: none; font-weight: 600;">
                             I consent to XR Horizon collecting and processing the information provided in this form and contacting me via phone, WhatsApp, email, or SMS regarding EXAR MS, product demonstrations, and related communications. By submitting this form, you agree to XR Horizon contacting you. Your information will not be shared with third parties and will be used solely for business communication purposes. You may withdraw your consent at any time by writing to us at info@xrhorizon.in
-                            <a href="#" id="readLessConsent" style="color: var(--accent-primary); text-decoration: none; margin-left: 5px;">Read less</a>
+                            <a href="#" id="readLessConsent" style="color: var(--accent-primary); text-decoration: none; margin-left: 5px; font-weight: normal;">Read less</a>
                         </span>
                     </span>
                 </label>
