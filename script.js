@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // Your deployed Google Apps Script URL
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoWDlKNuAUFn8eYu5s9bj1KsBUtYxkAjy_urtL6yFYCwc2CMYNlaZxt4BB7ZKjLUPh9Q/exec';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwDIE_9OqIv3UFoclsq3Y868k7FBD8n9DZiZYjU1TGKYd4W9FGj_eJl5BrRRdvPG7yb/exec';
             
             if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
                 // Simulation if URL is not configured
